@@ -5,6 +5,14 @@
 List data structure implementations for Jeffrey D. Ullman, Alfred V. Aho and John E. Hopcroft ["Data Structures
 and Algorithms" book](https://www.amazon.com/Data-Structures-Algorithms-Alfred-Aho/dp/0201000237).
 
+<h3>Installation</h3>
+```sh
+    $ cd build
+    $ cmake ../
+    $ make
+    $ ./example
+```
+
 <h3>Roadmap</h3>
 * Add List data structure interface;
 * Add array-based list implementation;
