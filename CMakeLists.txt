@@ -1,3 +1,5 @@
 cmake_minimum_required (VERSION 2.6)
 project (List)
-add_executable(example src/example.cpp)
+include_directories (include)
+set (SOURCES src/example.cpp src/array.cpp src/out_of_bounds.cpp)
+add_executable (example ${SOURCES})
