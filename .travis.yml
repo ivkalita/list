@@ -9,4 +9,4 @@ before_script:
   - cmake ../
   - make
 
-script: ./example
+script: ./list_test
