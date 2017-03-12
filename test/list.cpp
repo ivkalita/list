@@ -9,6 +9,14 @@ List* createList(int maxlength = 5) {
   return new ArrayList(maxlength);
 }
 
+List* createFilledList(int maxlength = 5) {
+  List *list = createList(maxlength);
+  for (int i = 0; i < maxlength; i++) {
+    list->Insert(i, list->End());
+  }
+  return list;
+}
+
 TEST(insert, at_the_start) {
   List *list = createList();
   list->Insert(13, list->First());
