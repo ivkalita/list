@@ -6,7 +6,7 @@
 using namespace kaduev13;
 
 List* createList(int maxlength = 5) {
-  return new ArrayList(5);
+  return new ArrayList(maxlength);
 }
 
 TEST(insert, at_the_start) {
