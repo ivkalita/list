@@ -34,6 +34,24 @@ TEST(insert, length_overflow) {
   EXPECT_THROW(list->Insert(5, list->End()), OutOfBounds*);
 }
 
+TEST(insert, mixed) {
+  List *list = createList();
+  list->Insert(0, list->First());
+  list->Insert(2, list->End());
+  list->Insert(1, list->Next(list->First()));
+  ASSERT_EQ(0, list->Retrieve(list->First()));
+  ASSERT_EQ(1, list->Retrieve(list->Next(list->First())));
+  ASSERT_EQ(2, list->Retrieve(list->Next(list->Next(list->First()))));
+}
+
+TEST(make_null, fill) {
+  List *list = createList();
+  list->Insert(0, list->First());
+  ASSERT_FALSE(list->First() == list->End());
+  list->MakeNull();
+  ASSERT_TRUE(list->First() == list->End());
+}
+
 int main(int argc, char *argv[]) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

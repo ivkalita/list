@@ -61,7 +61,7 @@ namespace kaduev13 {
     if (position < First() || position > End()) {
       throw new OutOfBounds(End(), position);
     }
-    for (int i = Previous(End()); i > position; i = Previous(i)) {
+    for (int i = End(); i > position; i = Previous(i)) {
       elements[i] = Retrieve(Previous(i));
     }
     elements[position] = x;
@@ -88,7 +88,7 @@ namespace kaduev13 {
     std::cout << "Last = " << last << "\n";
     std::cout << "First = " << First() << "\n";
     for (int i = First(); i != End(); i = Next(i)) {
-      std::cout << elements[i] << " ";
+      std::cout << Retrieve(i) << " ";
     }
     std::cout << "\n";
   };
