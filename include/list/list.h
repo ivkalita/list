@@ -5,7 +5,7 @@ namespace kaduev13 {
   class List {
   public:
     virtual ~List() = 0;
-    virtual void Insert(int x, int position) = 0;
+    virtual List* Insert(int x, int position) = 0;
     virtual int Locate(int x) = 0;
     virtual int Retrieve(int position) = 0;
     virtual void Remove(int position) = 0;
@@ -13,7 +13,7 @@ namespace kaduev13 {
     virtual int Previous(int position) = 0;
     virtual void MakeNull() = 0;
     virtual int First() = 0;
-    virtual int Last() = 0;
+    virtual int End() = 0;
     virtual void Print() = 0;
   };
 

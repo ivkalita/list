@@ -6,6 +6,8 @@ namespace kaduev13 {
   class OutOfBounds : public std::logic_error {
   public:
     OutOfBounds(int _array_length, int _index);
+    int GetArrayLength();
+    int GetRequestedPosition();
   private:
     int array_length;
     int index;

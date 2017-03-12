@@ -8,7 +8,7 @@ namespace kaduev13 {
   public:
     ArrayList(int maxlength);
     ~ArrayList();
-    void Insert(int x, int position);
+    List* Insert(int x, int position);
     int Locate(int x);
     int Retrieve(int position);
     void Remove(int position);
@@ -16,7 +16,7 @@ namespace kaduev13 {
     int Previous(int position);
     void MakeNull();
     int First();
-    int Last();
+    int End();
     void Print();
   private:
     int maxlength;
