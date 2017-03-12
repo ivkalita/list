@@ -21,15 +21,15 @@ TEST(insert, at_the_start) {
   List *list = createList();
   list->Insert(13, list->First());
   int item = list->Retrieve(list->First());
-  ASSERT_EQ(13, item);
+  ASSERT_EQ(13, item) << "First element mismatch";
 }
 
 TEST(insert, at_the_end) {
   List* list = createList();
   list->Insert(13, list->End());
   list->Insert(14, list->End());
-  ASSERT_EQ(13, list->Retrieve(list->First()));
-  ASSERT_EQ(14, list->Retrieve(list->Next(list->First())));
+  ASSERT_EQ(13, list->Retrieve(0)) << "First element mismatch.";
+  ASSERT_EQ(14, list->Retrieve(1)) << "Second element mismatch.";
 }
 
 TEST(insert, length_overflow) {
@@ -47,17 +47,53 @@ TEST(insert, mixed) {
   list->Insert(0, list->First());
   list->Insert(2, list->End());
   list->Insert(1, list->Next(list->First()));
-  ASSERT_EQ(0, list->Retrieve(list->First()));
-  ASSERT_EQ(1, list->Retrieve(list->Next(list->First())));
-  ASSERT_EQ(2, list->Retrieve(list->Next(list->Next(list->First()))));
+  ASSERT_EQ(0, list->Retrieve(0)) << "First element mismatch.";
+  ASSERT_EQ(1, list->Retrieve(1)) << "Second element mismatch.";
+  ASSERT_EQ(2, list->Retrieve(2)) << "Third element mismatch.";
 }
 
 TEST(make_null, fill) {
   List *list = createList();
   list->Insert(0, list->First());
-  ASSERT_FALSE(list->First() == list->End());
+  ASSERT_FALSE(list->First() == list->End()) << "Non-null list is null.";
   list->MakeNull();
-  ASSERT_TRUE(list->First() == list->End());
+  ASSERT_TRUE(list->First() == list->End()) << "List is not null.";
+}
+
+TEST(previous, empty_pre_first) {
+  List *list = createList();
+  int pre_first = list->Previous(list->First());
+  EXPECT_THROW(list->Previous(pre_first), OutOfBounds*);
+}
+
+TEST(previous, empty_first) {
+  List *list = createList();
+  int pos = list->Previous(list->First());
+  ASSERT_EQ(-1, pos) << "Pre-first position mismatch.";
+}
+
+TEST(previous, empty_end) {
+  List *list = createList();
+  int pos = list->Previous(list->End());
+  ASSERT_EQ(-1, pos) << "Pre-end position mismatch.";
+}
+
+TEST(previous, filled_pre_first) {
+  List *list = createFilledList();
+  int pre_first = list->Previous(list->First());
+  EXPECT_THROW(list->Previous(pre_first), OutOfBounds*);
+}
+
+TEST(previous, filled_first) {
+  List *list = createFilledList();
+  int pos = list->Previous(list->First());
+  ASSERT_EQ(-1, pos) << "Pre-first position mismatch.";
+}
+
+TEST(previous, filled_end) {
+  List *list = createFilledList(5);
+  int pos = list->Previous(list->End());
+  ASSERT_EQ(4, pos) << "Pre-end position mismatch.";
 }
 
 int main(int argc, char *argv[]) {
