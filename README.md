@@ -14,10 +14,10 @@ and Algorithms" book](https://www.amazon.com/Data-Structures-Algorithms-Alfred-A
 ```
 
 <h3>Roadmap</h3>
-* Add List data structure interface;
-* Add array-based list implementation;
-* Add gtest framework;
-* Add test-cases;
++ Add List data structure interface;
++ Add array-based list implementation;
++ Add gtest framework;
++ Add test-cases;
 * Add code coverage;
 * Add single-linked list implementation;
 * Add double-linked list implementation;
